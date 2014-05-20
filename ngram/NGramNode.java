@@ -78,7 +78,7 @@ public class NGramNode implements NGramContainer {
 	}
 
 	// method created to check the exception conditions.
-	private boolean emptyPrediction(String[] predict, String empty) {
+	public boolean emptyPrediction(String[] predict, String empty) {
 		for (String s : predict) {
 			if (s == empty)
 				return true;
@@ -103,7 +103,7 @@ public class NGramNode implements NGramContainer {
 	}
 
 	// method for checking exception condition
-	private boolean invalidProbability(Double[] invalidProb) {
+	public boolean invalidProbability(Double[] invalidProb) {
 		for (Double d : invalidProb) {
 			if (d <= 0 || d > 1) {
 				return true;
@@ -111,14 +111,22 @@ public class NGramNode implements NGramContainer {
 		}
 		return false;
 	}
-
+	
+	@Override
 	public String toString() {
 		String str = "";
 		for (int i = 0; i < getPredictions().length; i++) {
 			str += getContext() + " | " + getPredictions()[i] + " : "
-					+ getProbabilities()[i] + "\n";
+					+ getProbabilities()[i] +"\n";
 		}
 
+		/*String test = "be or not to | be : 0.136059\n"
+				+ "be or not to | mention : 0.066563\n"
+				+ "be or not to | exceed : 0.032759\n"
+				+ "be or not to | say : 0.028824\n"
+				+ "be or not to | the : 0.024524\n";
+		 * 
+		 */
 		return str;
 	}
 

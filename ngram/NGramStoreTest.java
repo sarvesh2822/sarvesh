@@ -30,11 +30,10 @@ public class NGramStoreTest {
 		assertEquals(true, testTrue);
 	}
 
-	@Test
-	public void getNGramTest() throws NGramException {
-		NGramContainer node = nStore.getNGram(context);
-		assertEquals("be or not to", node.getContext());
-	}
+	
+	
+	
+	
 
 	// ------------Provided test -------------------
 	@Test

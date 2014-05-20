@@ -20,7 +20,7 @@ import assign2.ngram.NGramStore;
 public class NGramGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = -7031008862559936404L;
-	private static final String REGEX = "[ 0-9~`!@#$%^&*(){}|;:<>?/_@./#&+-]+";
+	private static final String REGEX = "[s 0-9~`!@#$%^&*(){}|;:<>?/_@./#&+-]+";
 	//private static final int MAX_RESULTS = 5;
 	private JPanel topPanel;
 
@@ -29,7 +29,7 @@ public class NGramGUI extends JFrame implements ActionListener {
 	private JButton btnSearch;
 
 	private JPanel textPanel;
-	private JPanel chartPanel;
+	//private JPanel chartPanel;
 	private JPanel btmPanel;
 
 	// private JTextArea textDisplay;

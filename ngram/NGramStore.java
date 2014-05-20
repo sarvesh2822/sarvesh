@@ -4,8 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import assign2.examples.ngram.SimpleNGramGenerator;
+
 import com.microsoft.research.webngram.service.GenerationService;
 import com.microsoft.research.webngram.service.NgramServiceFactory;
+import com.microsoft.research.webngram.service.GenerationService.TokenSet;
 
 public class NGramStore implements NGramMap {
 
@@ -42,17 +45,13 @@ public class NGramStore implements NGramMap {
 	}
 
 	@Override
-	public boolean getNGramsFromService(String context, int maxResults)
-			throws NGramException {
-		NgramServiceFactory factory = NgramServiceFactory
-				.newInstance(NGramStore.Key);
+	public boolean getNGramsFromService(String context, int maxResults) throws NGramException {
+		
+		NgramServiceFactory factory = NgramServiceFactory.newInstance(NGramStore.Key);
 		GenerationService service = factory.newGenerationService();
-		// I have used the 2013-12/5 model. Only returns 2 results - see
-		// http://weblm.research.microsoft.com/weblm/rest.svc/
-		GenerationService.TokenSet tokenSet = service.generate(NGramStore.Key,
-				"bing-body/2013-12/5", context, maxResults, null);
-		System.out.println(tokenSet.getWords());
 
+		TokenSet tokenSet = service.generate(NGramStore.Key,"bing-body/2013-12/5", context, 5, null);
+		//System.out.println(tokenSet.getWords());
 		if (tokenSet.getProbabilities().size() == 0) {
 			return false;
 		}
@@ -60,6 +59,7 @@ public class NGramStore implements NGramMap {
 		List<Double> logProbs = tokenSet.getProbabilities();
 
 		int resultSize = tokenSet.getWords().size();
+		
 		Double[] probs = new Double[resultSize];
 		String[] predictions = new String[resultSize];
 
@@ -68,14 +68,13 @@ public class NGramStore implements NGramMap {
 			probs[i] = Math.pow(10.0, logProbs.get(i));
 		}
 
-		NGramContainer nGramContainer = new NGramNode(context, predictions,
-				probs);
+		NGramContainer nGramContainer = new NGramNode(context, predictions,probs);
 		model.put(context, nGramContainer);
 		return true;
 	}
 
 	
-
+	@Override
 	public String toString() {
 		String str = "";
 		for (String context : model.keySet()) {

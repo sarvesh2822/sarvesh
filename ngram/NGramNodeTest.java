@@ -111,6 +111,13 @@ public class NGramNodeTest {
 	}
 
 	// ---------------------------------------------------------------//
+	
+	@Test 
+	public void wordsConstructorPredictionsEmptyTest() throws NGramException {
+		String[] testPredictArray = {};
+		NGramNode testnode = new NGramNode(words, testPredictArray, probabilities);
+		assertEquals("", testnode.getContextPhrase(testPredictArray));
+	}
 
 	@Test
 	public void setContextArrayTest() throws NGramException {
@@ -128,6 +135,13 @@ public class NGramNodeTest {
 	}
 
 	// ---------------------------------------------------------------//
+	@Test (expected=NullPointerException.class )
+	public void wordsConstructorNullTest() throws NGramException {
+		String[] testWords = null;
+		NGramNode testnode = new NGramNode(testWords, predictions, probabilities);
+		assertEquals(null, testnode.getContextPhrase(testWords));
+	}
+
 	// For the requirement provided
 	@Test
 	public void NoExtraPublicMethods() {
