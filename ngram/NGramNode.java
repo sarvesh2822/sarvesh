@@ -115,6 +115,7 @@ public class NGramNode implements NGramContainer {
 	
 	@Override
 	public String toString() {
+		
 		String str = "";
 		for (int i = 0; i < getPredictions().length; i++) {
 			str += getContext() + " | " + getPredictions()[i] + " : "

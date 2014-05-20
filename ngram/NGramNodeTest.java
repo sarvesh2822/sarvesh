@@ -214,20 +214,27 @@ public class NGramNodeTest {
 	}
 
 	@Test
-	public void TOSTRING_ComplexObject() throws NGramException {
-		DecimalFormat df = new DecimalFormat(NGramContainer.DecFormat);
-		String test = "be or not to | be : 0.136059\n"
-				+ "be or not to | mention : 0.066563\n"
-				+ "be or not to | exceed : 0.032759\n"
-				+ "be or not to | say : 0.028824\n"
-				+ "be or not to | the : 0.024524\n";
-		toTest.setContext("be or not to");
-		toTest.setPredictions(new String[] { "be", "mention", "exceed", "say",
-				"the" });
-		toTest.setProbabilities(new Double[] { 0.13605912332, 0.066563234345,
-				0.03275912314, 0.028823899932, 0.0245242343 });
-		String str = toTest.toString();
-		assertEquals(test, str);
-	}
+
+    public void TOSTRING_ComplexObject() throws NGramException {
+
+             DecimalFormat df = new DecimalFormat(NGramContainer.DecFormat);
+
+             String test = "be or not to | be : 0.136059\n" + "be or not to | mention : 0.066563\n" +
+
+                                       "be or not to | exceed : 0.032759\n" + "be or not to | say : 0.028824\n" +
+
+                                       "be or not to | the : 0.024524\n";
+
+             toTest.setContext("be or not to");
+
+             toTest.setPredictions(new String[]{"be","mention","exceed","say","the"});
+
+             toTest.setProbabilities(new Double[]{0.13605912332,0.066563234345,0.03275912314,0.028823899932,0.0245242343});
+
+             String str = toTest.toString();
+
+          assertEquals(test,str);
+
+    }
 
 }
