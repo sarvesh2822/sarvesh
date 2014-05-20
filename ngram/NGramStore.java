@@ -50,7 +50,7 @@ public class NGramStore implements NGramMap {
 		NgramServiceFactory factory = NgramServiceFactory.newInstance(NGramStore.Key);
 		GenerationService service = factory.newGenerationService();
 
-		TokenSet tokenSet = service.generate(NGramStore.Key,"bing-body/2013-12/5", context, 5, null);
+		TokenSet tokenSet = service.generate(NGramStore.Key,"bing-body/2013-12/5", context, maxResults, null);
 		//System.out.println(tokenSet.getWords());
 		if (tokenSet.getProbabilities().size() == 0) {
 			return false;

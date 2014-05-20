@@ -5,6 +5,7 @@ public class NGramNode implements NGramContainer {
 	private String context;
 	private String[] predictions;
 	private Double[] probabilities;
+	
 
 	public NGramNode(String context, String[] predictions,
 			Double[] probabilities) throws NGramException {
@@ -49,7 +50,7 @@ public class NGramNode implements NGramContainer {
 
 	// Getting the context from the words array appending it and returning it as
 	// a merged string
-	public String getContextPhrase(String[] words) {
+	protected String getContextPhrase(String[] words) {
 		if (words != null) {
 			StringBuilder sb = new StringBuilder();
 			for (String s : words) {
@@ -78,7 +79,7 @@ public class NGramNode implements NGramContainer {
 	}
 
 	// method created to check the exception conditions.
-	public boolean emptyPrediction(String[] predict, String empty) {
+	private boolean emptyPrediction(String[] predict, String empty) {
 		for (String s : predict) {
 			if (s == empty)
 				return true;
@@ -103,7 +104,7 @@ public class NGramNode implements NGramContainer {
 	}
 
 	// method for checking exception condition
-	public boolean invalidProbability(Double[] invalidProb) {
+	private boolean invalidProbability(Double[] invalidProb) {
 		for (Double d : invalidProb) {
 			if (d <= 0 || d > 1) {
 				return true;
@@ -120,13 +121,6 @@ public class NGramNode implements NGramContainer {
 					+ getProbabilities()[i] +"\n";
 		}
 
-		/*String test = "be or not to | be : 0.136059\n"
-				+ "be or not to | mention : 0.066563\n"
-				+ "be or not to | exceed : 0.032759\n"
-				+ "be or not to | say : 0.028824\n"
-				+ "be or not to | the : 0.024524\n";
-		 * 
-		 */
 		return str;
 	}
 

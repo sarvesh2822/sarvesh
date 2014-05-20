@@ -20,7 +20,7 @@ import assign2.ngram.NGramStore;
 public class NGramGUI extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = -7031008862559936404L;
-	private static final String REGEX = "[s 0-9~`!@#$%^&*(){}|;:<>?/_@./#&+-]+";
+	private static final String REGEX = "[0-9~`!@#$%^&*(){}|;:<>?/_@./#&+-]+";
 	//private static final int MAX_RESULTS = 5;
 	private JPanel topPanel;
 
@@ -29,7 +29,7 @@ public class NGramGUI extends JFrame implements ActionListener {
 	private JButton btnSearch;
 
 	private JPanel textPanel;
-	//private JPanel chartPanel;
+	private JPanel chartPanel;
 	private JPanel btmPanel;
 
 	// private JTextArea textDisplay;
@@ -87,18 +87,6 @@ public class NGramGUI extends JFrame implements ActionListener {
 		this.getContentPane().add(btmPanel, BorderLayout.SOUTH);
 	}
 
-	/**
-	 * @param args
-	 * String chk = "My name is this and that";
-		if(Pattern.matches(REGEX, chk)){
-			System.out.println("Matched");
-		}else{
-			System.out.println("Not");
-		}
-	 */
-	
-	
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String buttonString = e.getActionCommand();
@@ -107,11 +95,11 @@ public class NGramGUI extends JFrame implements ActionListener {
 			textPanel.setVisible(true);
 			//chartPanel.setVisible(false);
 		} else if (buttonString.equals("Chart O/p")) {
-			//chartPanel.setVisible(true);
+			chartPanel.setVisible(true);
 			textPanel.setVisible(false);
 		} else if (buttonString.equals("Search")) {
 			String resultString = "";
-            if(txtPhrases.getText() == null || txtPhrases.getText().equals("") || Pattern.matches(REGEX, txtPhrases.getText())  ) {
+            if(txtPhrases.getText() == null || txtPhrases.getText().equals("") || Pattern.matches(REGEX, txtPhrases.getText()) ) {
                 resultString += "Enter some phrease or words for prediction and a valid one";
             } else if(txtNumEntries.getText() == null || txtNumEntries.getText().equals("")) {
                 resultString += "Enter some number for number of query output";

@@ -7,6 +7,8 @@ import java.lang.reflect.Array;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.microsoft.research.webngram.service.exception.NgramServiceException;
+
 public class NGramStoreTest {
 
 	private NGramStore nStore;
@@ -23,6 +25,8 @@ public class NGramStoreTest {
 		nStore = new NGramStore();
 		nStore.getNGramsFromService("be or not to", 5);
 	}
+	
+
 
 	@Test
 	public void getNGramFromServiceTest() throws NGramException {
@@ -30,7 +34,26 @@ public class NGramStoreTest {
 		assertEquals(true, testTrue);
 	}
 
+	@Test
+	public void getNGramTest() throws NGramException {
+		NGramContainer node = nStore.getNGram(context);
+		assertEquals("be or not to", node.getContext());
+	}
 	
+	@Test (expected = NgramServiceException.class)
+		public void getNGramsFromServiceNullTest() throws NGramException {
+		boolean testFalse = nStore.getNGramsFromService(null, 5);
+		assertEquals(false, testFalse);
+	}
+	
+	@Test (expected = NgramServiceException.class)
+	public void getNGramsFromServiceReturnEmptyStringTest() throws NGramException {
+	boolean testFalse = nStore.getNGramsFromService("", 5);
+	assertEquals(false, testFalse);
+	}
+	
+	
+
 	
 	
 	
