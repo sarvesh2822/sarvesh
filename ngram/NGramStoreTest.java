@@ -1,8 +1,11 @@
 package assign2.ngram;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Array;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,14 +23,25 @@ public class NGramStoreTest {
 	// private Map<String, NGramContainer> model = new HashMap<String,
 	// NGramContainer>();
 
+	private Map<String, NGramContainer> 
+	model = new HashMap<String, NGramContainer>();
+	
 	@Before
 	public void setUp() throws NGramException {
 		nStore = new NGramStore();
 		nStore.getNGramsFromService("be or not to", 5);
 	}
+	@Test 
+	public void addNGramTest(){ 
+		NGramContainer node = nStore.getNGram(context); 
+		model.put(context, node); assertTrue(model.containsKey(context)); }
 	
 
-
+	@Test public void removeNGramTest(){ 
+		NGramContainer node = nStore.getNGram(context); nStore.addNGram(node);
+		model.remove(node); //model.hash assertEquals(false,model.containsKey(node)); }
+	}
+	
 	@Test
 	public void getNGramFromServiceTest() throws NGramException {
 		boolean testTrue = nStore.getNGramsFromService("be or not to ", 5);
@@ -53,12 +67,7 @@ public class NGramStoreTest {
 	assertEquals(false, testFalse);
 	}
 	
-	@Test
-	public void removeNGramTest() throws NGramException {
-		NGramNode node = new NGramNode(context, predictions, probabilities);
-		nStore.addNGram(node);
-		nStore.removeNGram(context);
-	}
+	
 	
 	
 	
