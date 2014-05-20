@@ -36,10 +36,10 @@ public class NGramStoreTest {
 		NGramContainer node = nStore.getNGram(context); 
 		model.put(context, node); assertTrue(model.containsKey(context)); }
 	
-
 	@Test public void removeNGramTest(){ 
 		NGramContainer node = nStore.getNGram(context); nStore.addNGram(node);
 		model.remove(node); //model.hash assertEquals(false,model.containsKey(node)); }
+	
 	}
 	
 	@Test
