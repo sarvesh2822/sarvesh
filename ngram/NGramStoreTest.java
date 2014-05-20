@@ -46,11 +46,25 @@ public class NGramStoreTest {
 		assertEquals(false, testFalse);
 	}
 	
+	
 	@Test (expected = NgramServiceException.class)
 	public void getNGramsFromServiceReturnEmptyStringTest() throws NGramException {
 	boolean testFalse = nStore.getNGramsFromService("", 5);
 	assertEquals(false, testFalse);
 	}
+	
+	@Test
+	public void removeNGramTest() throws NGramException {
+		NGramNode node = new NGramNode(context, predictions, probabilities);
+		nStore.addNGram(node);
+		nStore.removeNGram(context);
+	}
+	
+	
+	
+	
+
+
 	
 	
 

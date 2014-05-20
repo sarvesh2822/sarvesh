@@ -99,6 +99,7 @@ public class NGramGUI extends JFrame implements ActionListener {
 			textPanel.setVisible(false);
 		} else if (buttonString.equals("Search")) {
 			String resultString = "";
+			//Validating users entry and checking for empty or null inputs
             if(txtPhrases.getText() == null || txtPhrases.getText().equals("") || Pattern.matches(REGEX, txtPhrases.getText()) ) {
                 resultString += "Enter some phrease or words for prediction and a valid one";
             } else if(txtNumEntries.getText() == null || txtNumEntries.getText().equals("")) {

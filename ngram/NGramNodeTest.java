@@ -52,6 +52,10 @@ public class NGramNodeTest {
 		nGram.setContext(emptyTest);
 		assertEquals(" ", nGram.getContext());
 	}
+	
+	
+	
+	
 
 	// ---------------------------------------------------------------//
 
@@ -133,7 +137,25 @@ public class NGramNodeTest {
 		nGram.setContext(stringNull);
 		assertEquals(null, nGram.getContextPhrase(stringNull));
 	}
+	
+	
+	@Test
+	(expected=NGramException.class)
+	public void constructorProbabilitiesContainsZeroTest() throws NGramException {
+		Double[] testDouble = {};
+		NGramNode testnode = new NGramNode(context, predictions, testDouble);
+		testnode.setProbabilities(testDouble);
+		assertEquals("", testnode.getProbabilities());
+	}
+	
+	
 
+
+	
+	
+	
+	
+	
 	// ---------------------------------------------------------------//
 	@Test (expected=NullPointerException.class )
 	public void wordsConstructorNullTest() throws NGramException {
