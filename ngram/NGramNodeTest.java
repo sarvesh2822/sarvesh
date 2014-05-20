@@ -225,13 +225,13 @@ public class NGramNodeTest {
 
                                        "be or not to | the : 0.024524\n";
 
-             toTest.setContext("be or not to");
+             nGram.setContext("be or not to");
 
-             toTest.setPredictions(new String[]{"be","mention","exceed","say","the"});
+             nGram.setPredictions(new String[]{"be","mention","exceed","say","the"});
 
-             toTest.setProbabilities(new Double[]{0.13605912332,0.066563234345,0.03275912314,0.028823899932,0.0245242343});
+             nGram.setProbabilities(new Double[]{0.13605912332,0.066563234345,0.03275912314,0.028823899932,0.0245242343});
 
-             String str = toTest.toString();
+             String str = nGram.toString();
 
           assertEquals(test,str);
 

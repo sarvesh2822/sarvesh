@@ -1,5 +1,7 @@
 package assign2.ngram;
 
+import java.text.DecimalFormat;
+
 public class NGramNode implements NGramContainer {
 
 	private String context;
@@ -115,11 +117,11 @@ public class NGramNode implements NGramContainer {
 	
 	@Override
 	public String toString() {
-		
+		  DecimalFormat df = new DecimalFormat(NGramContainer.DecFormat);
 		String str = "";
 		for (int i = 0; i < getPredictions().length; i++) {
 			str += getContext() + " | " + getPredictions()[i] + " : "
-					+ getProbabilities()[i] +"\n";
+					+ df.format(getProbabilities()[i]) +"\n";
 		}
 
 		return str;
