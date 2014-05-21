@@ -2,6 +2,21 @@ package assign2.ngram;
 
 public class NGramNode implements NGramContainer {
 
+	private String context;
+	private String[] predictions;
+	private Double[] probabilities;
+	
+	public NGramNode(String context, String[] predictions, Double[] probabilities)throws NGramException {
+		this.context = context;
+		this.predictions = predictions;
+		this.probabilities = probabilities;
+	}
+	
+	public NGramNode(String[] words, String[] predictions, Double[] probabilities)throws NGramException{
+		
+		
+	}
+
 	@Override
 	public String getContext() {
 		// TODO Auto-generated method stub
