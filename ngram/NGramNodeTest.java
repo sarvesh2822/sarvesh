@@ -30,6 +30,21 @@ public class NGramNodeTest {
 		nGram.setContext("new String Test");
 		assertEquals("new String Test", nGram.getContext());
 	}
+	
+	@Test (expected = NGramException.class)
+	public void setContextNullTest()throws NGramException{
+		String nullTest = null;
+		nGram.setContext(nullTest);
+		assertEquals(null, nGram.getContext());
+	}
+	
+	@Test (expected = NGramException.class)
+	public void setContextEmptyTest()throws NGramException{
+		String emptyTest = " ";
+		nGram.setContext(emptyTest);
+		assertEquals(" ", nGram.getContext());
+	}
+	
 
 	// ---------------------------------------------------------------//
 
@@ -45,6 +60,21 @@ public class NGramNodeTest {
 		assertArrayEquals(testPredict, nGram.getPredictions());
 
 	}
+	
+	@Test(expected = NGramException.class)
+	public void setPredictionNullTest() throws NGramException {
+		String[] testPredictions = null;
+		nGram.setPredictions(testPredictions);
+		assertArrayEquals(null, nGram.getPredictions());
+	}
+
+	@Test(expected = NGramException.class)
+	public void setPredictionEmptyPredictionTest() throws NGramException {
+		String[] testPredictions = {" ", "to"};
+		nGram.setPredictions(testPredictions);
+		assertEquals(" ", "to", nGram.getPredictions());
+	}
+
 
 	// ---------------------------------------------------------------//
 
@@ -59,5 +89,39 @@ public class NGramNodeTest {
 		nGram.setProbabilities(testProb);
 		assertArrayEquals(testProb, nGram.getProbabilities());
 	}
+	
+	@Test(expected = NGramException.class)
+	public void setProbabilitiesNullTest() throws NGramException {
+		Double[] testProbabilities = null;
+		nGram.setProbabilities(testProbabilities);
+		
+	}
+
+	@Test(expected = NGramException.class)
+	public void setProbabilitiesInvalidProbabilitiesTest()
+			throws NGramException {
+		Double[] testProbabilities = { 1.5, -2.8 };
+		nGram.setProbabilities(testProbabilities);
+	}
+	
+	// ---------------------------------------------------------------//
+	
+		@Test 
+		public void setContextArrayTest()throws NGramException{
+			String[] stringArray = {"to","the","end"};
+			nGram.setContext(stringArray);
+			assertEquals("to the end ", nGram.getContextPhrase(stringArray));
+		
+		}
+		
+		@Test (expected = NGramException.class)
+		public void setContextArrayNullTest()throws NGramException{
+			String[] stringNull = null;
+			nGram.setContext(stringNull);
+			assertEquals(null, nGram.getContextPhrase(stringNull));
+		}
+		
+		// ---------------------------------------------------------------//
+
 
 }

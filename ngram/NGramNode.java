@@ -47,11 +47,12 @@ public class NGramNode implements NGramContainer {
 
 	}
 
-	private String getContextPhrase(String[] words) {
+	public String getContextPhrase(String[] words) {
 		if (words != null) {
 			StringBuilder sb = new StringBuilder();
 			for (String s : words) {
-				sb.append(s).append("");
+				sb.append(s)
+				.append(" ");
 			}
 			return sb.toString();
 		} else
@@ -103,6 +104,16 @@ public class NGramNode implements NGramContainer {
 				return true;
 			}
 		}return false;
+	}
+	
+	public String toString(){
+		String str = "";
+		for (int i = 0; i < getPredictions().length; i++) {
+			str += getContext() + "|" + getPredictions()[i] + ":"
+					+ getProbabilities()[i] + "\n";
+		}
+
+		return str;
 	}
 
 }
