@@ -11,7 +11,7 @@ public class NGramNodeTest {
 	String context = "be or not to";
 	String[] words = {"to", "be", "or", "not"};
 	String[] predictions = {"my", "home", "come", "here", "to"};
-	Double[] probabilities = {0.123456, 0.038926, 0.028956, 0.021325, 0.021998};
+	Double[] probabilities = {0.123456, 0.038926, 0.028956, 0.021325, 0.020998};
 
 	@Before
 	public void initilialize() throws NGramException {
