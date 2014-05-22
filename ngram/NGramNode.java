@@ -46,13 +46,14 @@ public class NGramNode implements NGramContainer {
 		this.context = getContextPhrase(words);
 
 	}
-
+	
+	//Getting the context from the words array appending it and returning it as a merged string
 	public String getContextPhrase(String[] words) {
 		if (words != null) {
 			StringBuilder sb = new StringBuilder();
 			for (String s : words) {
-				sb.append(s)
-				.append(" ");
+				sb.append(s);
+				sb.append(" ");
 			}
 			return sb.toString();
 		} else
@@ -75,6 +76,7 @@ public class NGramNode implements NGramContainer {
 
 	}
 
+	//method created to check the exception conditions. 
 	private boolean emptyPrediction(String[] predict, String empty) {
 		for (String s : predict) {
 			if (s == empty)
@@ -98,6 +100,7 @@ public class NGramNode implements NGramContainer {
 
 	}
 
+	//method for checking exception condition
 	private boolean invalidProbability(Double[] invalidProb) {
 		for(Double d: invalidProb){
 			if(d <=0 || d > 1){
