@@ -2,6 +2,7 @@ package assign2.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.TextArea;
@@ -29,6 +30,7 @@ public class NGramGUI extends JFrame implements ActionListener{
 	private JButton button;
 	private JTextField textPhrase;
 	private JTextField textNumEntry;
+	private JTextArea textDisplay;
 	
 	private JPanel topPanel;
 	private JPanel textPanel;
@@ -40,11 +42,12 @@ public class NGramGUI extends JFrame implements ActionListener{
 		
 		setLayout(new BorderLayout());
 		
+		//---------------Top panel---------------------------//
 		topPanel = new JPanel();
 		topPanel.setBackground(Color.LIGHT_GRAY);
 		
-		//GridLayout gl = new GridLayout(0,2);
-		//topPanel.setLayout(gl);
+		GridLayout gl = new GridLayout(0,2);
+		topPanel.setLayout(gl);
 		
 		JLabel lblEnterPhrase = new JLabel("Enter Phrase:");
 		topPanel.add(lblEnterPhrase);
@@ -59,20 +62,29 @@ public class NGramGUI extends JFrame implements ActionListener{
 		searchButton = new JButton("Search");
 		topPanel.add(searchButton);
 		
-		
 		getContentPane().add(topPanel,BorderLayout.NORTH);
 		
+		//---------------------Result Body ---------------------//
+		textDisplay = new JTextArea("Your result display's here");
+		textDisplay.setEditable(false);
+		getContentPane().add(textDisplay,BorderLayout.CENTER);
 		
 		
+		//---------------------BottomPanel----------------------//
 		
-		
+		buttomPanel = new JPanel();
+		buttomPanel.setBackground(Color.DARK_GRAY);
+		buttomPanel.setLayout(new FlowLayout());
+		button = new JButton("Search");
+		buttomPanel.add(button);
+		getContentPane().add(buttomPanel,BorderLayout.SOUTH);
 		
 		
 		//textArea = new JTextArea();
-		button = new JButton("Search");
+		
 		
 		//add(textArea,BorderLayout.CENTER);
-		add(button,BorderLayout.SOUTH);
+		//add(button,BorderLayout.SOUTH);
 		
 		
 		
