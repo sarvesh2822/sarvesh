@@ -1,10 +1,24 @@
 package assign2.gui;
 
-public class Suggestions {
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
+public class Suggestions{
+
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new NGramGUI("NGram Predictor");
+				
+			}
+		});
 
 	}
+
+	
+	
 
 }
