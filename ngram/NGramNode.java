@@ -46,8 +46,9 @@ public class NGramNode implements NGramContainer {
 		this.context = getContextPhrase(words);
 
 	}
-	
-	//Getting the context from the words array appending it and returning it as a merged string
+
+	// Getting the context from the words array appending it and returning it as
+	// a merged string
 	public String getContextPhrase(String[] words) {
 		if (words != null) {
 			StringBuilder sb = new StringBuilder();
@@ -76,7 +77,7 @@ public class NGramNode implements NGramContainer {
 
 	}
 
-	//method created to check the exception conditions. 
+	// method created to check the exception conditions.
 	private boolean emptyPrediction(String[] predict, String empty) {
 		for (String s : predict) {
 			if (s == empty)
@@ -93,26 +94,28 @@ public class NGramNode implements NGramContainer {
 
 	@Override
 	public void setProbabilities(Double[] probabilities) throws NGramException {
-		if (probabilities == null || probabilities.length == 0 || invalidProbability(probabilities)){
+		if (probabilities == null || probabilities.length == 0
+				|| invalidProbability(probabilities)) {
 			throw new NGramException("Invalid probability");
 		}
 		this.probabilities = probabilities;
 
 	}
 
-	//method for checking exception condition
+	// method for checking exception condition
 	private boolean invalidProbability(Double[] invalidProb) {
-		for(Double d: invalidProb){
-			if(d <=0 || d > 1){
+		for (Double d : invalidProb) {
+			if (d <= 0 || d > 1) {
 				return true;
 			}
-		}return false;
+		}
+		return false;
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		String str = "";
 		for (int i = 0; i < getPredictions().length; i++) {
-			str += getContext() + "|" + getPredictions()[i] + ":"
+			str += getContext() + " | " + getPredictions()[i] + " : "
 					+ getProbabilities()[i] + "\n";
 		}
 

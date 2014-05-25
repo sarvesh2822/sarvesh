@@ -1,7 +1,6 @@
 package assign2.gui;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class ChartPanel extends JPanel {
-
 }

@@ -7,15 +7,15 @@ import java.util.Map;
 import com.microsoft.research.webngram.service.GenerationService;
 import com.microsoft.research.webngram.service.NgramServiceFactory;
 
-public class NGramStore implements NGramMap{
-	
+public class NGramStore implements NGramMap {
+
 	public static final String Key = "068cc746-31ff-4e41-ae83-a2d3712d3e68";
 	public static final String DefaultContext = "My hovercraft is full";
-	
+
 	private Map<String, NGramContainer> model;
-	
-	public NGramStore(){
-		if(model == null){
+
+	public NGramStore() {
+		if (model == null) {
 			model = new HashMap<String, NGramContainer>();
 		}
 	}
@@ -23,24 +23,23 @@ public class NGramStore implements NGramMap{
 	@Override
 	public void addNGram(NGramContainer ngram) {
 		model.put(ngram.getContext(), ngram);
-		
+
 	}
 
 	@Override
 	public void removeNGram(String context) {
 		model.remove(context);
-		
+
 	}
 
 	@Override
 	public NGramContainer getNGram(String context) {
-		
+
 		if (model.get(context) != null) {
 			return model.get(context);
 		}
 		return null;
 	}
-	
 
 	@Override
 	public boolean getNGramsFromService(String context, int maxResults)
@@ -60,7 +59,6 @@ public class NGramStore implements NGramMap{
 
 		List<Double> logProbs = tokenSet.getProbabilities();
 
-		
 		int resultSize = tokenSet.getWords().size();
 		Double[] probs = new Double[resultSize];
 		String[] predictions = new String[resultSize];
@@ -75,12 +73,11 @@ public class NGramStore implements NGramMap{
 		model.put(context, nGramContainer);
 		return true;
 	}
-	
+
 	public static void main(String[] args) throws Exception {
 		NGramStore n = new NGramStore();
 		n.getNGramsFromService(NGramStore.DefaultContext, 5);
-		
-		
+
 	}
 
 	public String toString() {
