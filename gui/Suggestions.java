@@ -7,8 +7,8 @@ import javax.swing.SwingUtilities;
 
 public class Suggestions {
 
-	public static final int WIDTH = 600;
-	public static final int HEIGHT = 500;
+	private static final int WIDTH = 600;
+	private static final int HEIGHT = 500;
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {

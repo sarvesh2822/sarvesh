@@ -53,8 +53,8 @@ public class NGramNode implements NGramContainer {
 		if (words != null) {
 			StringBuilder sb = new StringBuilder();
 			for (String s : words) {
-				sb.append(s);
-				sb.append(" ");
+				sb.append(s)
+				.append(" ");
 			}
 			return sb.toString();
 		} else

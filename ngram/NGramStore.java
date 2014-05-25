@@ -9,8 +9,8 @@ import com.microsoft.research.webngram.service.NgramServiceFactory;
 
 public class NGramStore implements NGramMap {
 
-	public static final String Key = "068cc746-31ff-4e41-ae83-a2d3712d3e68";
-	public static final String DefaultContext = "My hovercraft is full";
+	private static final String Key = "068cc746-31ff-4e41-ae83-a2d3712d3e68";
+	//private static final String DefaultContext = "My hovercraft is full";
 
 	private Map<String, NGramContainer> model;
 
@@ -74,11 +74,7 @@ public class NGramStore implements NGramMap {
 		return true;
 	}
 
-	public static void main(String[] args) throws Exception {
-		NGramStore n = new NGramStore();
-		n.getNGramsFromService(NGramStore.DefaultContext, 5);
-
-	}
+	
 
 	public String toString() {
 		String str = "";
